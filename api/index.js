@@ -2,6 +2,10 @@
 const express = require("express");
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors()); // Allow all origins
+
 const { quests } = require('./quests.js');
 
 // Endpoint to fetch quests with pagination
