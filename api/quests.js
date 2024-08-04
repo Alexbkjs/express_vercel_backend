@@ -1,4 +1,4 @@
-const quests = [
+export const quests = [
     {
         "id": 1,
         "imageUrl": "https://res.cloudinary.com/dlw4nmwwo/image/upload/v1722777790/crcoem2zbihbej6naqai.png",
@@ -42,9 +42,7 @@ const quests = [
         "award": "артефакти"
     }
 ];
-module.exports = {
-    quests
-}
+
 // const quests = [
 //     {
 //         "id": 1,
