@@ -18,11 +18,11 @@ app.use(cors()); // Allow all origins
 const { quests } = require('./quests.js');
 // import image from '../images/quests/basic.png'
 
-const image = '../images/quests/basic.png'
+// const image = '../images/quests/basic.png'
 
-cloudinary.uploader.upload(image).then(result => {
-  console.log(result)
-})
+// cloudinary.uploader.upload(image).then(result => {
+//   console.log(result)
+// })
 
 
 // Endpoint to fetch quests with pagination
