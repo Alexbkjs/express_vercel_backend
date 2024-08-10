@@ -6,8 +6,8 @@ const cors = require('cors');
 
 app.use(cors()); // Allow all origins
 
-const { quests } = require('./quests_cldn.js');
-// const { quests } = require('./quests.js');
+// const { quests } = require('./quests_cldn.js');
+const { quests } = require('./quests.js');
 
 
 // Endpoint to fetch quests with pagination

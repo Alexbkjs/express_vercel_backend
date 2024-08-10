@@ -1,6 +1,9 @@
 import { validate, parse } from '@telegram-apps/init-data-node';
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 /**
  * Sets init data in the specified Response object.
