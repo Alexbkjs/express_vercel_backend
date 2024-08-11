@@ -5,6 +5,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient();
+
+// (async () => {
+//   try {
+//     await prisma.$connect();
+//     console.log('Connected to SQLite database');
+//   } catch (err) {
+//     console.error('SQLite connection error:', err);
+//   }
+// })();
+
 /**
  * Sets init data in the specified Response object.
  * @param {Response} res - Response object.
@@ -82,13 +94,14 @@ const defaultErrorMiddleware = (err, _req, res, _next) => {
 
 // Your secret bot token.
 const token = process.env.BOT_TOKEN
+console.log(token)
 
 // Create an Express app and start listening on port 3000.
 const app = express();
 
 app.use(cors()); // Allow all origins
 app.use(authMiddleware);
-app.post('/api/auth', showInitDataMiddleware);
+app.post('/api/v1/auth', showInitDataMiddleware);
 app.use(defaultErrorMiddleware);
 
 app.listen(3000, () => {
