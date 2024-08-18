@@ -40,5 +40,47 @@ export const quests = [
         "name": "Битва з міні-босом",
         "description": "Складання онлайн-іспиту для отримання артефакту",
         "award": "артефакти"
+    },
+    {
+        "id": 7,
+        "imageUrl": "https://quests-app-bucket.s3.eu-north-1.amazonaws.com/images/reusable.png",
+        "name": "7Багаторазовий квест",
+        "description": "Залучайте нових учасників за партнерським посиланням",
+        "award": "очки досвіду"
+    },
+    {
+        "id": 8,
+        "imageUrl": "https://quests-app-bucket.s3.eu-north-1.amazonaws.com/images/team.png",
+        "name": "8Командний квест",
+        "description": "Участь у командному проекті для отримання досвіду та Золотих Монет",
+        "award": "очки досвіду, золоті тамідні монети, артефакти"
+    },
+    {
+        "id": 9,
+        "imageUrl": "https://quests-app-bucket.s3.eu-north-1.amazonaws.com/images/mini_boss.png",
+        "name": "9Битва з міні-босом",
+        "description": "Складання онлайн-іспиту для отримання артефакту",
+        "award": "артефакти"
+    },
+    {
+        "id": 10,
+        "imageUrl": "https://quests-app-bucket.s3.eu-north-1.amazonaws.com/images/reusable.png",
+        "name": "10Багаторазовий квест",
+        "description": "Залучайте нових учасників за партнерським посиланням",
+        "award": "очки досвіду"
+    },
+    {
+        "id": 11,
+        "imageUrl": "https://quests-app-bucket.s3.eu-north-1.amazonaws.com/images/team.png",
+        "name": "11Командний квест",
+        "description": "Участь у командному проекті для отримання досвіду та Золотих Монет",
+        "award": "очки досвіду, золоті тамідні монети, артефакти"
+    },
+    {
+        "id": 12,
+        "imageUrl": "https://quests-app-bucket.s3.eu-north-1.amazonaws.com/images/mini_boss.png",
+        "name": "12Битва з міні-босом",
+        "description": "Складання онлайн-іспиту для отримання артефакту",
+        "award": "артефакти"
     }
 ];
