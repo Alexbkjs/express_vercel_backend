@@ -25,43 +25,16 @@ router.get('/', (req, res) => {
     res.json(paginatedQuests);
 });
 
-// Endpoint to fetch quest images with pagination
-router.get('/images', (req, res) => {
-    const paginatedQuests = paginateQuests(req);
-    res.json(paginatedQuests);
-});
+// Endpoint to fetch a specific quest by ID
+router.get('/:id', (req, res) => {
+    const questId = req.params.id;
 
-// Endpoint to fetch quest text with pagination
-router.get('/text', (req, res) => {
-    const paginatedQuests = paginateQuests(req);
-    res.json(paginatedQuests);
+    const quest = quests.find(q => q.id === parseInt(questId));
+    if (!quest) {
+        return res.status(404).json({ message: 'Quest not found' });
+    }
+
+    res.json(quest);
 });
 
 export default router;
-
-
-
-// without pagination:
-
-// import express from 'express';
-// import { quests } from '../data/quests.js';
-
-// const router = express.Router();
-
-// // Endpoint to fetch all quests without pagination
-// router.get('/', (req, res) => {
-//     res.json(quests);
-// });
-
-// // Other endpoints if needed
-// router.get('/images', (req, res) => {
-//     // Handle quest images endpoint if needed
-//     res.json(quests.map(q => ({ id: q.id, imageUrl: q.imageUrl })));
-// });
-
-// router.get('/text', (req, res) => {
-//     // Handle quest text endpoint if needed
-//     res.json(quests.map(q => ({ id: q.id, name: q.name, description: q.description })));
-// });
-
-// export default router;
