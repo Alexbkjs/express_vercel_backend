@@ -10,34 +10,71 @@ generator client {
 }
 
 model User {
-  id            Int          @id @default(autoincrement())
-  telegramId    BigInt       @unique
+  id            Int           @id @default(autoincrement())
+  telegramId    BigInt        @unique
   firstName     String
   lastName      String
-  class         String
-  level         Int          @default(1)
-  points        Int          @default(0)
-  coins         Int          @default(0)
+  class         String  
+  imageUrl      String?       // Optional field, default handled in backend logic
+  level         Int           @default(1)
+  points        Int           @default(0)
+  coins         Int           @default(0)
   achievements  Achievement[]  // Relationship to Achievement model
-  activeQuests  Quest[]        // Relationship to Quest model
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  activeQuests  UserQuestProgress[] // Relationship to UserQuestProgress model
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 }
 
 model Achievement {
-  id        Int      @id @default(autoincrement())
-  name      String
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String
+  imageUrl     String
+  isLocked     Boolean  @default(true) // Indicates if the achievement is locked for the user
+  userId       Int?
+  user         User?     @relation(fields: [userId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Quest {
-  id        Int      @id @default(autoincrement())
-  name      String
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                Int      @id @default(autoincrement())
+  name              String
+  imageUrl          String   @default("")   
+  description       String   @default("")   
+  award             String   @default("")   
+  goal              String   @default("")  
+  requirements      Requirement[]
+  rewards           Reward[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  userQuestProgress UserQuestProgress[] // Relationship to UserQuestProgress model
+}
+
+model UserQuestProgress {
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  questId           Int
+  status            String   // e.g., "NOT_STARTED", "IN_PROGRESS", "COMPLETED"
+  progress          Float    @default(0.0)
+  startedAt         DateTime?
+  completedAt       DateTime?
+  isLocked          Boolean  @default(true) // User-specific lock status
+  user              User     @relation(fields: [userId], references: [id])
+  quest             Quest    @relation(fields: [questId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+model Requirement {
+  id                Int      @id @default(autoincrement())
+  description       String
+  questId           Int
+  quest             Quest    @relation(fields: [questId], references: [id])
+}
+
+model Reward {
+  id                Int      @id @default(autoincrement())
+  description       String
+  questId           Int
+  quest             Quest    @relation(fields: [questId], references: [id])
 }
